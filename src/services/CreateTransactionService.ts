@@ -21,6 +21,12 @@ class CreateTransactionService {
       type,
     });
 
+    const { total } = this.transactionsRepository.getBalance();
+
+    if (type && type === 'outcome' && value > total) {
+      throw new Error('string');
+    }
+
     return transaction;
   }
 }
